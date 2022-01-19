@@ -1,4 +1,4 @@
-package com.pss.quick_setup.di
+package com.pss.check_percentage.di
 
 import com.pss.data.repository.MainRepositoryImpl
 import com.pss.data.repository.remote.datasourceImpl.MainDataSourceImpl

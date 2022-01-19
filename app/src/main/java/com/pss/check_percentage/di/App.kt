@@ -1,4 +1,4 @@
-package com.pss.quick_setup.di
+package com.pss.check_percentage.di
 
 import android.app.Application
 import dagger.hilt.android.HiltAndroidApp

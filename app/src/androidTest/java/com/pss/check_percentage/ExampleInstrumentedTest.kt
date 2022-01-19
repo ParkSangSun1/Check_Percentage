@@ -1,4 +1,4 @@
-package com.pss.quick_setup
+package com.pss.check_percentage
 
 import androidx.test.platform.app.InstrumentationRegistry
 import androidx.test.ext.junit.runners.AndroidJUnit4

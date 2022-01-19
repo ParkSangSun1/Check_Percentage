@@ -7,7 +7,7 @@ dependencyResolutionManagement {
         maven { url 'https://jitpack.io' }
     }
 }
-rootProject.name = "Quick_Setup"
+rootProject.name = "Check_Percentage"
 include ':app'
 include ':domain'
 include ':data'
