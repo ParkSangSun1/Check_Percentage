@@ -9,5 +9,32 @@
         android:id="@+id/mainFragment"
         android:name="com.pss.presentation.view.MainFragment"
         tools:layout="@layout/fragment_main"
-        android:label="MainFragment" />
+        android:label="MainFragment" >
+        <action
+            android:id="@+id/action_mainFragment_to_wemanNameFragment"
+            app:destination="@id/wemanNameFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/manNameFragment"
+        android:name="com.pss.presentation.view.ManNameFragment"
+        tools:layout="@layout/fragment_man_name"
+        android:label="ManNameFragment" >
+        <action
+            android:id="@+id/action_manNameFragment_to_resultFragment"
+            app:destination="@id/resultFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/wemanNameFragment"
+        android:name="com.pss.presentation.view.WemanNameFragment"
+        tools:layout="@layout/fragment_weman_name"
+        android:label="WemanNameFragment" >
+        <action
+            android:id="@+id/action_wemanNameFragment_to_manNameFragment"
+            app:destination="@id/manNameFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/resultFragment"
+        android:name="com.pss.presentation.view.ResultFragment"
+        tools:layout="@layout/fragment_result"
+        android:label="ResultFragment" />
 </navigation>
