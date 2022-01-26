@@ -33,10 +33,12 @@ class MainViewModel @Inject constructor(
     }
 
     override fun onError(msg: String) {
+        Log.d("로그","error msg : $msg")
         _errorMessage.postValue(msg)
     }
 
     override fun onError(errorType: ErrorType) {
+        Log.d("로그","error type : $errorType")
         _errorType.postValue(errorType)
     }
 }
