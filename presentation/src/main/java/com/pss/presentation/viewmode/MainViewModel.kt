@@ -4,6 +4,7 @@ import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.pss.domain.model.DomainLoveResponse
 import com.pss.domain.usecase.CheckLoveCalculatorUseCase
 import com.pss.domain.utils.ErrorType
 import com.pss.domain.utils.RemoteErrorEmitter
@@ -23,22 +24,28 @@ class MainViewModel @Inject constructor(
     val errorMessage: LiveData<String> get() = _errorMessage
     private var _errorMessage = SingleLiveEvent<String>()
 
+    val successEvent: LiveData<DomainLoveResponse> get() = _successEvent
+    private var _successEvent = SingleLiveEvent<DomainLoveResponse>()
+
     var manNameResult = "manEx"
     var womanNameResult = "womanEx"
 
-    fun checkLoveCalculator(host : String, key : String, mName : String, wName : String) = viewModelScope.launch {
-        checkLoveCalculatorUseCase.execute(this@MainViewModel, host, key, mName, wName).let { response ->
-            Log.d("로그","response : $response")
+
+    fun checkLoveCalculator(host: String, key: String, mName: String, wName: String) =
+        viewModelScope.launch {
+            checkLoveCalculatorUseCase.execute(this@MainViewModel, host, key, mName, wName)
+                .let { response ->
+                    if (response != null) _successEvent.postValue(response)
+                }
         }
-    }
 
     override fun onError(msg: String) {
-        Log.d("로그","error msg : $msg")
+        Log.d("로그", "error msg : $msg")
         _errorMessage.postValue(msg)
     }
 
     override fun onError(errorType: ErrorType) {
-        Log.d("로그","error type : $errorType")
+        Log.d("로그", "error type : $errorType")
         _errorType.postValue(errorType)
     }
 }

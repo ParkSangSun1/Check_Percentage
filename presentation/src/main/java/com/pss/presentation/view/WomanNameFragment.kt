@@ -15,7 +15,6 @@ class WomanNameFragment : BaseFragment<FragmentWomanNameBinding>(R.layout.fragme
 
     override fun init() {
         binding.fragment = this
-        mainViewModel.checkLoveCalculator("love-calculator.p.rapidapi.com","6f15755a03msh1e9952813104629p1ae459jsn2facf2b12aaa","Park","Sang")
     }
 
     fun nextBtnClick(view: View){
