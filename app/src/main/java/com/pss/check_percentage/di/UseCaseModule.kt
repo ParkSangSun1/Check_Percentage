@@ -1,7 +1,7 @@
 package com.pss.check_percentage.di
 
 import com.pss.domain.repository.MainRepository
-import com.pss.domain.usecase.TestUseCase
+import com.pss.domain.usecase.CheckLoveCalculatorUseCase
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -13,6 +13,6 @@ import javax.inject.Singleton
 class UseCaseModule {
     @Provides
     @Singleton
-    fun provideTestUseCase(repository: MainRepository) = TestUseCase(repository)
+    fun provideCheckLoveCalculatorUseCase(repository: MainRepository) = CheckLoveCalculatorUseCase(repository)
 
 }

@@ -1,7 +1,7 @@
 package com.pss.check_percentage.di
 
-import com.pss.data.remote.api.SampleApi
-import com.pss.presentation.widget.utils.Utils.BASE_URL
+import com.pss.check_percentage.utils.Utils.BASE_URL
+import com.pss.data.remote.api.LoveCalculatorApi
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -51,8 +51,8 @@ object NetworkModule {
 
     @Provides
     @Singleton
-    fun provideSampleApiService(retrofit: Retrofit): SampleApi {
-        return retrofit.create(SampleApi::class.java)
+    fun provideLoveCalculatorApiService(retrofit: Retrofit): LoveCalculatorApi {
+        return retrofit.create(LoveCalculatorApi::class.java)
     }
 
 
