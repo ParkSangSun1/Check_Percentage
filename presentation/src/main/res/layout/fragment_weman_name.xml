@@ -4,7 +4,9 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
-
+        <variable
+            name="fragment"
+            type="com.pss.presentation.view.WemanNameFragment" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -33,6 +35,7 @@
                 android:textStyle="bold"
                 />
             <EditText
+                android:id="@+id/edit_txt"
                 android:layout_marginTop="10dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -47,6 +50,7 @@
             android:gravity="center"
             android:background="@drawable/name_setting_btn_frame"
             android:text="다음으로"
+            android:onClick="@{fragment::nextBtnClick}"
             android:layout_margin="16dp"
             android:textSize="17sp"
             android:padding="10dp"
