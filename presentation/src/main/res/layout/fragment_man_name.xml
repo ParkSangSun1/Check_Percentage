@@ -4,7 +4,9 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <data>
-
+        <variable
+            name="fragment"
+            type="com.pss.presentation.view.ManNameFragment" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -32,6 +34,7 @@
                 android:textStyle="bold"
                 />
             <EditText
+                android:id="@+id/edit_txt"
                 android:layout_marginTop="10dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -49,6 +52,7 @@
             android:layout_margin="16dp"
             android:textSize="17sp"
             android:padding="10dp"
+            android:onClick="@{fragment::nextBtnClick}"
             android:textColor="@color/white"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
