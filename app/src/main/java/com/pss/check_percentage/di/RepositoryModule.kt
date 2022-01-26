@@ -1,7 +1,7 @@
 package com.pss.check_percentage.di
 
 import com.pss.data.repository.MainRepositoryImpl
-import com.pss.data.repository.remote.datasourceImpl.MainDataSourceImpl
+import com.pss.data.repository.remote.datasourceimpl.MainDataSourceImpl
 import com.pss.domain.repository.MainRepository
 import dagger.Module
 import dagger.Provides

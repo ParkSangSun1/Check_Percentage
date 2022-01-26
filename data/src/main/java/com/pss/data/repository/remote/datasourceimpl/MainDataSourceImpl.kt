@@ -1,4 +1,4 @@
-package com.pss.data.repository.remote.datasourceImpl
+package com.pss.data.repository.remote.datasourceimpl
 
 import com.pss.data.remote.api.LoveCalculatorApi
 import com.pss.data.remote.model.DataLoveResponse
