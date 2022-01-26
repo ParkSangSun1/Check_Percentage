@@ -2,7 +2,6 @@ package com.pss.data.repository
 
 import com.pss.data.mapper.MainMapper
 import com.pss.data.repository.remote.datasource.MainDataSource
-import com.pss.data.utils.base.BaseRepository
 import com.pss.domain.model.DomainLoveResponse
 import com.pss.domain.repository.MainRepository
 import com.pss.domain.utils.RemoteErrorEmitter
