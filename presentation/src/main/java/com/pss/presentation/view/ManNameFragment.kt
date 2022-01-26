@@ -9,6 +9,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
 import com.pss.domain.utils.ErrorType
+import com.pss.domain.utils.ScreenState
 import com.pss.presentation.R
 import com.pss.presentation.base.BaseFragment
 import com.pss.presentation.databinding.FragmentManNameBinding
@@ -33,19 +34,22 @@ class ManNameFragment : BaseFragment<FragmentManNameBinding>(R.layout.fragment_m
     }
 
     private fun observeViewModel(){
-        mainViewModel.successEvent.observe(this,{
+        mainViewModel.apiCallEvent.observe(this,{
             binding.progressBar.visibility = View.INVISIBLE
-            this.findNavController().navigate(R.id.action_manNameFragment_to_resultFragment)
-        })
-
-        mainViewModel.errorType.observe(this,{
             when(it){
-                ErrorType.NETWORK ->longShowToast("네트워크 오류가 발생했습니다")
-                ErrorType.SESSION_EXPIRED ->longShowToast("세션이 만료되었습니다")
-                ErrorType.TIMEOUT ->longShowToast("서버 호출 시간이 초과되었습니다")
-                ErrorType.UNKNOWN ->longShowToast("예기치 못한 오류가 발생했습니다")
+                ScreenState.LOADING -> this.findNavController().navigate(R.id.action_manNameFragment_to_resultFragment)
+                ScreenState.ERROR -> toastErrorMsg()
+                else -> shortShowToast("알수없는 오류가 발생했습니다")
             }
-            binding.progressBar.visibility = View.INVISIBLE
         })
+    }
+
+    private fun toastErrorMsg(){
+        when(mainViewModel.apiErrorType){
+            ErrorType.NETWORK ->longShowToast("네트워크 오류가 발생했습니다")
+            ErrorType.SESSION_EXPIRED ->longShowToast("세션이 만료되었습니다")
+            ErrorType.TIMEOUT ->longShowToast("서버 호출 시간이 초과되었습니다")
+            ErrorType.UNKNOWN ->longShowToast("예기치 못한 오류가 발생했습니다")
+        }
     }
 }

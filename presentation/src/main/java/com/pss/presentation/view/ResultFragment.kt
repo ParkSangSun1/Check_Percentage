@@ -21,6 +21,6 @@ class ResultFragment : BaseFragment<FragmentResultBinding>(R.layout.fragment_res
     }
 
     private fun initResult(){
-        binding.percentage.text = mainViewModel.successEvent.value?.percentage.toString()
+        binding.percentage.text = mainViewModel.apiCallResult.percentage.toString()
     }
 }

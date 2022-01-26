@@ -8,6 +8,7 @@ import com.pss.domain.model.DomainLoveResponse
 import com.pss.domain.usecase.CheckLoveCalculatorUseCase
 import com.pss.domain.utils.ErrorType
 import com.pss.domain.utils.RemoteErrorEmitter
+import com.pss.domain.utils.ScreenState
 import com.pss.presentation.widget.utils.SingleLiveEvent
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
@@ -18,15 +19,12 @@ class MainViewModel @Inject constructor(
     private val checkLoveCalculatorUseCase: CheckLoveCalculatorUseCase
 ) : ViewModel(), RemoteErrorEmitter {
 
-    val errorType: LiveData<ErrorType> get() = _errorType
-    private var _errorType = SingleLiveEvent<ErrorType>()
+    val apiCallEvent: LiveData<ScreenState> get() = _apiCallEvent
+    private var _apiCallEvent = SingleLiveEvent<ScreenState>()
 
-    val errorMessage: LiveData<String> get() = _errorMessage
-    private var _errorMessage = SingleLiveEvent<String>()
-
-    val successEvent: LiveData<DomainLoveResponse> get() = _successEvent
-    private var _successEvent = SingleLiveEvent<DomainLoveResponse>()
-
+    var apiCallResult = DomainLoveResponse("","",0,"")
+    var apiErrorType = ErrorType.UNKNOWN
+    var errorMessage ="none"
     var manNameResult = "manEx"
     var womanNameResult = "womanEx"
 
@@ -35,17 +33,19 @@ class MainViewModel @Inject constructor(
         viewModelScope.launch {
             checkLoveCalculatorUseCase.execute(this@MainViewModel, host, key, mName, wName)
                 .let { response ->
-                    if (response != null) _successEvent.postValue(response)
+                    if (response != null) {
+                        apiCallResult = response
+                        _apiCallEvent.postValue(ScreenState.LOADING)
+                    }
+                    else _apiCallEvent.postValue(ScreenState.ERROR)
                 }
         }
 
     override fun onError(msg: String) {
-        Log.d("로그", "error msg : $msg")
-        _errorMessage.postValue(msg)
+        errorMessage = msg
     }
 
     override fun onError(errorType: ErrorType) {
-        Log.d("로그", "error type : $errorType")
-        _errorType.postValue(errorType)
+        apiErrorType = errorType
     }
 }
