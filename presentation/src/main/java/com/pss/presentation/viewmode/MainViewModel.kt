@@ -12,6 +12,9 @@ class MainViewModel @Inject constructor(
     private val testUseCase: TestUseCase
 ) : ViewModel() {
 
+    var manNameResult = "manEx"
+    var womanNameResult = "womanEx"
+
     fun test() = viewModelScope.launch {
         testUseCase.execute().let { response ->
 

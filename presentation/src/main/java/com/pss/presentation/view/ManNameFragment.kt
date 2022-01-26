@@ -6,12 +6,16 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
 import com.pss.presentation.R
 import com.pss.presentation.base.BaseFragment
 import com.pss.presentation.databinding.FragmentManNameBinding
+import com.pss.presentation.viewmode.MainViewModel
 
 class ManNameFragment : BaseFragment<FragmentManNameBinding>(R.layout.fragment_man_name) {
+    private val mainViewModel by activityViewModels<MainViewModel>()
+
 
     override fun init() {
         binding.fragment = this
@@ -19,6 +23,9 @@ class ManNameFragment : BaseFragment<FragmentManNameBinding>(R.layout.fragment_m
 
     fun nextBtnClick(view: View){
         if (TextUtils.isEmpty(binding.editTxt.text.toString())) shortShowToast("이름을 입력해 주세요")
-        else this.findNavController().navigate(R.id.action_manNameFragment_to_resultFragment)
+        else {
+            mainViewModel.manNameResult = binding.editTxt.text.toString()
+            this.findNavController().navigate(R.id.action_manNameFragment_to_resultFragment)
+        }
     }
 }
