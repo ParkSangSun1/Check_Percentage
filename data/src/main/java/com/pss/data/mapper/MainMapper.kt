@@ -8,7 +8,6 @@ import com.pss.domain.utils.RemoteErrorEmitter
 object MainMapper {
 
     fun loveMapper(
-        remoteErrorEmitter: RemoteErrorEmitter,
         dataResponse: DataLoveResponse?
     ): DomainLoveResponse? {
         return if (dataResponse != null) {
