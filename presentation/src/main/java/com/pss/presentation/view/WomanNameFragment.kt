@@ -1,17 +1,13 @@
 package com.pss.presentation.view
 
-import android.os.Bundle
 import android.text.TextUtils
-import androidx.fragment.app.Fragment
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
 import androidx.navigation.fragment.findNavController
 import com.pss.presentation.R
 import com.pss.presentation.base.BaseFragment
-import com.pss.presentation.databinding.FragmentWemanNameBinding
+import com.pss.presentation.databinding.FragmentWomanNameBinding
 
-class WemanNameFragment : BaseFragment<FragmentWemanNameBinding>(R.layout.fragment_weman_name) {
+class WomanNameFragment : BaseFragment<FragmentWomanNameBinding>(R.layout.fragment_woman_name) {
 
     override fun init() {
         binding.fragment = this
@@ -19,6 +15,6 @@ class WemanNameFragment : BaseFragment<FragmentWemanNameBinding>(R.layout.fragme
 
     fun nextBtnClick(view: View){
         if (TextUtils.isEmpty(binding.editTxt.text.toString())) shortShowToast("이름을 입력해 주세요")
-        else this.findNavController().navigate(R.id.action_wemanNameFragment_to_manNameFragment)
+        else this.findNavController().navigate(R.id.action_womanNameFragment_to_manNameFragment)
     }
 }

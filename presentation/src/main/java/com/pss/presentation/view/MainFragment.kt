@@ -18,6 +18,6 @@ class MainFragment : BaseFragment<FragmentMainBinding>(R.layout.fragment_main) {
     }
 
     fun startBtnClick(view: View){
-        this.findNavController().navigate(R.id.action_mainFragment_to_wemanNameFragment)
+        this.findNavController().navigate(R.id.action_mainFragment_to_womanNameFragment)
     }
 }

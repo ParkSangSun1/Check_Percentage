@@ -6,7 +6,7 @@
     <data>
         <variable
             name="fragment"
-            type="com.pss.presentation.view.WemanNameFragment" />
+            type="com.pss.presentation.view.WomanNameFragment" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -14,7 +14,7 @@
         android:layout_height="match_parent"
         android:padding="20dp"
 
-        tools:context=".view.WemanNameFragment">
+        tools:context=".view.WomanNameFragment">
 
         <LinearLayout
             android:layout_width="match_parent"

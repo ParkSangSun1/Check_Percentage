@@ -11,8 +11,8 @@
         tools:layout="@layout/fragment_main"
         android:label="MainFragment" >
         <action
-            android:id="@+id/action_mainFragment_to_wemanNameFragment"
-            app:destination="@id/wemanNameFragment" />
+            android:id="@+id/action_mainFragment_to_womanNameFragment"
+            app:destination="@id/womanNameFragment" />
     </fragment>
     <fragment
         android:id="@+id/manNameFragment"
@@ -24,12 +24,12 @@
             app:destination="@id/resultFragment" />
     </fragment>
     <fragment
-        android:id="@+id/wemanNameFragment"
-        android:name="com.pss.presentation.view.WemanNameFragment"
-        tools:layout="@layout/fragment_weman_name"
-        android:label="WemanNameFragment" >
+        android:id="@+id/womanNameFragment"
+        android:name="com.pss.presentation.view.WomanNameFragment"
+        tools:layout="@layout/fragment_woman_name"
+        android:label="WomanNameFragment" >
         <action
-            android:id="@+id/action_wemanNameFragment_to_manNameFragment"
+            android:id="@+id/action_womanNameFragment_to_manNameFragment"
             app:destination="@id/manNameFragment" />
     </fragment>
     <fragment
