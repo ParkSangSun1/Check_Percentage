@@ -1,8 +1,8 @@
 package com.pss.data.repository.remote.datasource
 
-import com.pss.data.remote.model.TestResponse
-import retrofit2.Response
+import com.pss.data.remote.model.DataLoveResponse
+import com.pss.domain.utils.RemoteErrorEmitter
 
 interface MainDataSource {
-    suspend fun test() : Response<TestResponse>
+    suspend fun checkLoveCalculator(remoteErrorEmitter: RemoteErrorEmitter, host : String, key : String, mName : String, wName : String) : DataLoveResponse
 }

@@ -1,6 +1,6 @@
 package com.pss.check_percentage.di
 
-import com.pss.data.remote.api.SampleApi
+import com.pss.data.remote.api.LoveCalculatorApi
 import com.pss.data.repository.remote.datasource.MainDataSource
 import com.pss.data.repository.remote.datasourceImpl.MainDataSourceImpl
 import dagger.Module
@@ -16,10 +16,10 @@ class DataSourceImplModule {
     @Provides
     @Singleton
     fun provideMainDataSource(
-        sampleApi: SampleApi
+        loveCalculatorApi: LoveCalculatorApi
     ) : MainDataSource {
         return MainDataSourceImpl(
-            sampleApi
+            loveCalculatorApi
         )
     }
 }

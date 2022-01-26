@@ -1,17 +1,19 @@
 package com.pss.data.repository.remote.datasourceImpl
 
-import com.pss.data.remote.api.SampleApi
-import com.pss.data.remote.model.TestResponse
+import com.pss.data.remote.api.LoveCalculatorApi
+import com.pss.data.remote.model.DataLoveResponse
 import com.pss.data.repository.remote.datasource.MainDataSource
-import dagger.Binds
-import retrofit2.Response
+import com.pss.data.utils.base.BaseRepository
+import com.pss.domain.utils.RemoteErrorEmitter
 import javax.inject.Inject
 
 class MainDataSourceImpl @Inject constructor(
-    private val sampleApi: SampleApi
-) : MainDataSource {
+    private val loveCalculatorApi: LoveCalculatorApi
+) : BaseRepository(), MainDataSource {
 
-    override suspend fun test(): Response<TestResponse> {
-        return sampleApi.test()
+    override suspend fun checkLoveCalculator(remoteErrorEmitter: RemoteErrorEmitter, host : String, key : String, mName : String, wName : String): DataLoveResponse {
+        return safeApiCall(remoteErrorEmitter){
+            loveCalculatorApi.getPercentage(host = host, key = key, fName = wName, sName = mName)
+        }?.body()!!
     }
 }

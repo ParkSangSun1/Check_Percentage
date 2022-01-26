@@ -1,12 +1,16 @@
 package com.pss.data.mapper
 
-import com.pss.data.remote.model.TestResponse
+import com.pss.data.remote.model.DataLoveResponse
+import com.pss.domain.model.DomainLoveResponse
 
 object MainMapper {
-    fun mapperMain(response: TestResponse): com.pss.domain.model.TestResponse {
-        return com.pss.domain.model.TestResponse(
-            sampleRe_1 = response.sampleRe_1,
-            sampleRe_2 = response.sampleRe_2
+
+    fun loveMapper(dataResponse: DataLoveResponse): DomainLoveResponse {
+        return DomainLoveResponse(
+            fname = dataResponse.fname,
+            percentage = dataResponse.percentage,
+            result = dataResponse.result,
+            sname = dataResponse.sname
         )
     }
 }

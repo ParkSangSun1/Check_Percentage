@@ -1,7 +1,6 @@
 package com.pss.data.remote.api
 
-import com.pss.data.remote.model.LovePercentageResponse
-import com.pss.data.remote.model.TestResponse
+import com.pss.data.remote.model.DataLoveResponse
 import retrofit2.Response
 import retrofit2.http.GET
 import retrofit2.http.Header
@@ -14,5 +13,5 @@ interface LoveCalculatorApi {
         @Header("x-rapidapi-host") host: String,
         @Query("sname") sName : String,
         @Query("fname") fName : String
-        ) : Response<LovePercentageResponse>
+        ) : Response<DataLoveResponse>
 }
