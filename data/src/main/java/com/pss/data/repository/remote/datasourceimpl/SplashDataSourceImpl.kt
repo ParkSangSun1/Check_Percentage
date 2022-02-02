@@ -9,5 +9,5 @@ class SplashDataSourceImpl @Inject constructor(
     private val firebaseRtdb: FirebaseDatabase,
     private val fireStore: FirebaseFirestore
 ) : SplashDataSource {
-    override fun checkAppVersion() = firebaseRtdb.reference.child("version").get()
+    override fun checkAppVersion() = firebaseRtdb.reference.child("appVersion").get()
 }
