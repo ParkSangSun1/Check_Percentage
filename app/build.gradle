@@ -46,7 +46,6 @@ dependencies {
     implementation (AndroidX.APP_COMPAT)
     implementation (Google.MATERIAL)
     implementation (AndroidX.CONSTRAINT_LAYOUT)
-    implementation 'com.google.firebase:firebase-database:20.0.3'
     implementation 'com.google.firebase:firebase-database-ktx:20.0.3'
     implementation 'com.google.firebase:firebase-firestore-ktx:24.0.0'
     testImplementation 'junit:junit:4.+'
