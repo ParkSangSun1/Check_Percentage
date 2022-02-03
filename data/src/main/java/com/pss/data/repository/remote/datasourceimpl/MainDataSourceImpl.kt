@@ -26,4 +26,8 @@ class MainDataSourceImpl @Inject constructor(
     override fun getStatistics(): Task<DataSnapshot> {
         return firebaseRtdb.reference.child("statistics").get()
     }
+
+    override fun setStatistics(plusResult: Int): Task<Void> {
+        return firebaseRtdb.reference.child("statistics").setValue(plusResult)
+    }
 }

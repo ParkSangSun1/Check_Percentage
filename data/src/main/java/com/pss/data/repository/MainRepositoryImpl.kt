@@ -20,4 +20,8 @@ class MainRepositoryImpl @Inject constructor(
     override fun getStatistics(): Task<DataSnapshot> {
         return mainDataSource.getStatistics()
     }
+
+    override fun setStatistics(plusResult: Int): Task<Void> {
+        return mainDataSource.setStatistics(plusResult)
+    }
 }

@@ -9,4 +9,6 @@ interface MainDataSource {
     suspend fun checkLoveCalculator(remoteErrorEmitter: RemoteErrorEmitter, host : String, key : String, mName : String, wName : String) : DataLoveResponse?
 
     fun getStatistics() : Task<DataSnapshot>
+
+    fun setStatistics(plusResult : Int) : Task<Void>
 }
