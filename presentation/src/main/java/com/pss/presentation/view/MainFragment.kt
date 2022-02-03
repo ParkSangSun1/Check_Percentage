@@ -20,6 +20,8 @@ class MainFragment : BaseFragment<FragmentMainBinding>(R.layout.fragment_main) {
 
     override fun init() {
         binding.fragment = this
+        if (mainViewModel.getStatisticsDisplayEvent.value != null)
+            countNumber(0, mainViewModel.getStatisticsDisplayEvent.value!!, binding.number, 1000)
         observeViewModel()
     }
 
