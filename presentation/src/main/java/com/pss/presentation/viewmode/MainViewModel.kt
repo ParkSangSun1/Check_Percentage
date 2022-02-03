@@ -7,6 +7,7 @@ import androidx.lifecycle.viewModelScope
 import com.pss.domain.model.DomainLoveResponse
 import com.pss.domain.usecase.CheckLoveCalculatorUseCase
 import com.pss.domain.usecase.GetStatisticsUseCase
+import com.pss.domain.usecase.SetStatisticsUseCase
 import com.pss.domain.utils.ErrorType
 import com.pss.domain.utils.RemoteErrorEmitter
 import com.pss.domain.utils.ScreenState
@@ -18,7 +19,8 @@ import javax.inject.Inject
 @HiltViewModel
 class MainViewModel @Inject constructor(
     private val checkLoveCalculatorUseCase: CheckLoveCalculatorUseCase,
-    private val getStatisticsUseCase: GetStatisticsUseCase
+    private val getStatisticsUseCase: GetStatisticsUseCase,
+    private val setStatisticsUseCase: SetStatisticsUseCase
 ) : ViewModel(), RemoteErrorEmitter {
 
     val apiCallEvent: LiveData<ScreenState> get() = _apiCallEvent
@@ -44,6 +46,8 @@ class MainViewModel @Inject constructor(
         }
 
     fun getStatistics() = getStatisticsUseCase.execute()
+
+    fun setStatistics(plusResult : Int) = setStatisticsUseCase.execute(plusResult)
 
     override fun onError(msg: String) {
         errorMessage = msg
