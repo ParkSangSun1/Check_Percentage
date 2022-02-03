@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.activityViewModels
+import androidx.navigation.fragment.findNavController
 import com.pss.domain.model.DomainLoveResponse
 import com.pss.presentation.R
 import com.pss.presentation.base.BaseFragment
@@ -17,6 +18,7 @@ class ResultFragment : BaseFragment<FragmentResultBinding>(R.layout.fragment_res
 
 
     override fun init() {
+        binding.fragment = this
         initResult()
     }
 
@@ -34,6 +36,7 @@ class ResultFragment : BaseFragment<FragmentResultBinding>(R.layout.fragment_res
             }
             else -> setLoveMsgTxt("알수없는 힘!!")
         }
+        binding.backMainBtn.isEnabled = true
     }
 
     private fun saveStatistics() {
@@ -52,4 +55,8 @@ class ResultFragment : BaseFragment<FragmentResultBinding>(R.layout.fragment_res
     private fun error() = shortShowToast("통계를 저장하는데 오류가 발생했습니다")
 
     private fun setLoveMsgTxt(msg: String) = binding.loveTxt.setText(msg)
+
+    fun clickBackMainBtn(view: View){
+        this.findNavController().navigate(R.id.action_resultFragment_to_mainFragment)
+    }
 }
