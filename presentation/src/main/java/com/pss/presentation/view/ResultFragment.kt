@@ -12,6 +12,8 @@ import com.pss.presentation.R
 import com.pss.presentation.base.BaseFragment
 import com.pss.presentation.databinding.FragmentResultBinding
 import com.pss.presentation.viewmode.MainViewModel
+import java.text.SimpleDateFormat
+import java.util.*
 
 class ResultFragment : BaseFragment<FragmentResultBinding>(R.layout.fragment_result) {
     private val mainViewModel by activityViewModels<MainViewModel>()
@@ -20,7 +22,16 @@ class ResultFragment : BaseFragment<FragmentResultBinding>(R.layout.fragment_res
     override fun init() {
         binding.fragment = this
         initResult()
+        saveScore()
     }
+
+    private fun saveScore() = with(mainViewModel.apiCallResult){
+        mainViewModel.setScore(this.sname, this.fname, this.percentage, nowTime())
+    }
+
+    private fun nowTime(): String = SimpleDateFormat("yyyy년 MM월 dd일 HH시 mm분", Locale("ko", "KR")).format(
+        Date(System.currentTimeMillis())
+    )
 
     private fun initResult() {
         binding.percentage.text = mainViewModel.apiCallResult.percentage.toString()

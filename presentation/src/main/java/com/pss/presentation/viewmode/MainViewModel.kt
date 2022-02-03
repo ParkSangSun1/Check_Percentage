@@ -5,8 +5,10 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.pss.domain.model.DomainLoveResponse
+import com.pss.domain.model.DomainScore
 import com.pss.domain.usecase.CheckLoveCalculatorUseCase
 import com.pss.domain.usecase.GetStatisticsUseCase
+import com.pss.domain.usecase.SetScoreUseCase
 import com.pss.domain.usecase.SetStatisticsUseCase
 import com.pss.domain.utils.ErrorType
 import com.pss.domain.utils.RemoteErrorEmitter
@@ -20,7 +22,8 @@ import javax.inject.Inject
 class MainViewModel @Inject constructor(
     private val checkLoveCalculatorUseCase: CheckLoveCalculatorUseCase,
     private val getStatisticsUseCase: GetStatisticsUseCase,
-    private val setStatisticsUseCase: SetStatisticsUseCase
+    private val setStatisticsUseCase: SetStatisticsUseCase,
+    private val setScoreUseCase: SetScoreUseCase
 ) : ViewModel(), RemoteErrorEmitter {
 
     val apiCallEvent: LiveData<ScreenState> get() = _apiCallEvent
@@ -56,6 +59,10 @@ class MainViewModel @Inject constructor(
         }
 
     fun setStatistics(plusResult : Int) = setStatisticsUseCase.execute(plusResult)
+
+    fun setScore(man : String, woman : String,percentage : Int ,date : String){
+        setScoreUseCase.execute(DomainScore(man, woman, percentage, date))
+    }
 
     override fun onError(msg: String) {
         errorMessage = msg
