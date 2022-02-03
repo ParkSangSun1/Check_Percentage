@@ -63,6 +63,7 @@ class MainViewModel @Inject constructor(
 
     fun getScore() = getScoreUseCase.execute()
         .addOnSuccessListener { snapshot ->
+            scoreList.clear()
             for (item in snapshot.documents) {
                 item.toObject(DomainScore::class.java).let {
                     scoreList.add(it!!)
