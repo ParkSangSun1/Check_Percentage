@@ -3,6 +3,8 @@ package com.pss.data.repository.remote.datasource
 import com.google.android.gms.tasks.Task
 import com.google.firebase.database.DataSnapshot
 import com.pss.data.remote.model.DataLoveResponse
+import com.pss.data.remote.model.DataScore
+import com.pss.domain.model.DomainScore
 import com.pss.domain.utils.RemoteErrorEmitter
 
 interface MainDataSource {
@@ -11,4 +13,6 @@ interface MainDataSource {
     fun getStatistics() : Task<DataSnapshot>
 
     fun setStatistics(plusResult : Int) : Task<Void>
+
+    fun setScore(score: DataScore) : Task<Void>
 }

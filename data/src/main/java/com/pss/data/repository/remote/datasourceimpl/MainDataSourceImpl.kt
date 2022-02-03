@@ -6,6 +6,7 @@ import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.firestore.FirebaseFirestore
 import com.pss.data.remote.api.LoveCalculatorApi
 import com.pss.data.remote.model.DataLoveResponse
+import com.pss.data.remote.model.DataScore
 import com.pss.data.repository.remote.datasource.MainDataSource
 import com.pss.data.utils.base.BaseDataSource
 import com.pss.domain.utils.RemoteErrorEmitter
@@ -29,5 +30,9 @@ class MainDataSourceImpl @Inject constructor(
 
     override fun setStatistics(plusResult: Int): Task<Void> {
         return firebaseRtdb.reference.child("statistics").setValue(plusResult)
+    }
+
+    override fun setScore(score: DataScore): Task<Void> {
+        return fireStore.collection("score").document().set(score)
     }
 }
