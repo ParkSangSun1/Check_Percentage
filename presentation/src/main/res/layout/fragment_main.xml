@@ -75,16 +75,18 @@
                 android:layout_gravity="center"
                 android:orientation="horizontal">
                 <TextView
-                    android:layout_width="match_parent"
+                    android:id="@+id/number"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="0"
+                    android:text="받아오는중.. "
                     android:textColor="@color/main_color"
                     android:textSize="18sp"
                     android:textStyle="bold" />
                 <TextView
-                    android:layout_width="match_parent"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="명"
+                    android:layout_marginStart="10dp"
                     android:textColor="@color/black"
                     android:textSize="18sp"
                     android:textStyle="bold" />
