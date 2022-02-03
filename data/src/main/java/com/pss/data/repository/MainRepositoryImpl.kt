@@ -2,6 +2,7 @@ package com.pss.data.repository
 
 import com.google.android.gms.tasks.Task
 import com.google.firebase.database.DataSnapshot
+import com.google.firebase.firestore.QuerySnapshot
 import com.pss.data.mapper.MainMapper
 import com.pss.data.remote.model.DataScore
 import com.pss.data.repository.remote.datasource.MainDataSource
@@ -29,5 +30,9 @@ class MainRepositoryImpl @Inject constructor(
 
     override fun setScore(score: DomainScore): Task<Void> {
         return mainDataSource.setScore(MainMapper.scoreMapper(score))
+    }
+
+    override fun getScore(): Task<QuerySnapshot> {
+        return mainDataSource.getScore()
     }
 }
