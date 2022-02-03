@@ -4,6 +4,7 @@ import com.google.android.gms.tasks.Task
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.firestore.FirebaseFirestore
+import com.google.firebase.firestore.Query
 import com.google.firebase.firestore.QuerySnapshot
 import com.pss.data.remote.api.LoveCalculatorApi
 import com.pss.data.remote.model.DataLoveResponse
@@ -38,6 +39,6 @@ class MainDataSourceImpl @Inject constructor(
     }
 
     override fun getScore(): Task<QuerySnapshot> {
-        return fireStore.collection("score").get()
+        return fireStore.collection("score").orderBy("date", Query.Direction.DESCENDING).get()
     }
 }
