@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import androidx.activity.viewModels
+import com.pss.barlibrary.CustomBar.Companion.setTransparentBar
 import com.pss.presentation.R
 import com.pss.presentation.base.BaseActivity
 import com.pss.presentation.databinding.ActivitySplashBinding
@@ -17,6 +18,7 @@ class SplashActivity : BaseActivity<ActivitySplashBinding>(R.layout.activity_spl
     private val appVersion = "1.0.0"
 
     override fun init() {
+        setTransparentBar(this)
         splashViewModel.checkAppVersion()
             .addOnSuccessListener {
                 Log.d("로그","App version : ${it.value}")
