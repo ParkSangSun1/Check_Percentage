@@ -23,7 +23,7 @@ class DataSourceImplModule {
         loveCalculatorApi: LoveCalculatorApi,
         firebaseRtdb : FirebaseDatabase,
         fireStore : FirebaseFirestore
-    ) : MainDataSource {
+    ) : MainDataSourceImpl {
         return MainDataSourceImpl(
             loveCalculatorApi,
             firebaseRtdb, fireStore
@@ -35,7 +35,7 @@ class DataSourceImplModule {
     fun provideSplashDataSource(
         firebaseRtdb : FirebaseDatabase,
         fireStore : FirebaseFirestore
-    ) : SplashDataSource {
+    ) : SplashDataSourceImpl {
         return SplashDataSourceImpl(
             firebaseRtdb = firebaseRtdb, fireStore = fireStore
         )
