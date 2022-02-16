@@ -20,7 +20,7 @@ class RepositoryModule {
     @Singleton
     fun provideMainRepository(
         mainDataSourceImpl: MainDataSourceImpl
-    ): MainRepository {
+    ): MainRepositoryImpl {
         return MainRepositoryImpl(
             mainDataSourceImpl
         )
@@ -30,7 +30,7 @@ class RepositoryModule {
     @Singleton
     fun provideSplashRepository(
         splashDataSourceImpl: SplashDataSourceImpl
-    ): SplashRepository {
+    ): SplashRepositoryImpl {
         return SplashRepositoryImpl(
             splashDataSourceImpl
         )
