@@ -15,7 +15,7 @@ import javax.inject.Singleton
 
 @Module
 @InstallIn(SingletonComponent::class)
-class DataSourceImplModule {
+class DataSourceModule {
 
     @Provides
     @Singleton
@@ -23,7 +23,7 @@ class DataSourceImplModule {
         loveCalculatorApi: LoveCalculatorApi,
         firebaseRtdb : FirebaseDatabase,
         fireStore : FirebaseFirestore
-    ) : MainDataSourceImpl {
+    ) : MainDataSource {
         return MainDataSourceImpl(
             loveCalculatorApi,
             firebaseRtdb, fireStore
@@ -35,7 +35,7 @@ class DataSourceImplModule {
     fun provideSplashDataSource(
         firebaseRtdb : FirebaseDatabase,
         fireStore : FirebaseFirestore
-    ) : SplashDataSourceImpl {
+    ) : SplashDataSource {
         return SplashDataSourceImpl(
             firebaseRtdb = firebaseRtdb, fireStore = fireStore
         )

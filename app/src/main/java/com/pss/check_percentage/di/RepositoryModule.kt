@@ -2,6 +2,8 @@ package com.pss.check_percentage.di
 
 import com.pss.data.repository.MainRepositoryImpl
 import com.pss.data.repository.SplashRepositoryImpl
+import com.pss.data.repository.remote.datasource.MainDataSource
+import com.pss.data.repository.remote.datasource.SplashDataSource
 import com.pss.data.repository.remote.datasourceimpl.MainDataSourceImpl
 import com.pss.data.repository.remote.datasourceimpl.SplashDataSourceImpl
 import com.pss.domain.repository.MainRepository
@@ -19,20 +21,20 @@ class RepositoryModule {
     @Provides
     @Singleton
     fun provideMainRepository(
-        mainDataSourceImpl: MainDataSourceImpl
+        mainDataSource : MainDataSource
     ): MainRepository {
         return MainRepositoryImpl(
-            mainDataSourceImpl
+            mainDataSource
         )
     }
 
     @Provides
     @Singleton
     fun provideSplashRepository(
-        splashDataSourceImpl: SplashDataSourceImpl
+        splashDataSource: SplashDataSource
     ): SplashRepository {
         return SplashRepositoryImpl(
-            splashDataSourceImpl
+            splashDataSource
         )
     }
 }
