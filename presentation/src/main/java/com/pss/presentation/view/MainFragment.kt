@@ -1,11 +1,6 @@
 package com.pss.presentation.view
 
-import android.os.Bundle
-import android.util.Log
-import androidx.fragment.app.Fragment
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
 import com.pss.library.CountNumberEvent.Companion.countNumber
@@ -13,7 +8,7 @@ import com.pss.presentation.R
 import com.pss.presentation.adapter.ScoreRecyclerViewAdapter
 import com.pss.presentation.base.BaseFragment
 import com.pss.presentation.databinding.FragmentMainBinding
-import com.pss.presentation.viewmode.MainViewModel
+import com.pss.presentation.viewmodel.MainViewModel
 import com.pss.presentation.widget.extension.showVertical
 
 

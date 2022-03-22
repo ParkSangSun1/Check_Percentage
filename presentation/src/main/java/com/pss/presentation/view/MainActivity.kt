@@ -1,13 +1,9 @@
 package com.pss.presentation.view
 
-import androidx.appcompat.app.AppCompatActivity
-import android.os.Bundle
-import androidx.activity.viewModels
 import com.pss.barlibrary.CustomBar.Companion.setTransparentBar
 import com.pss.presentation.R
 import com.pss.presentation.base.BaseActivity
 import com.pss.presentation.databinding.ActivityMainBinding
-import com.pss.presentation.viewmode.MainViewModel
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint

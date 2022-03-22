@@ -7,7 +7,7 @@ import androidx.navigation.fragment.findNavController
 import com.pss.presentation.R
 import com.pss.presentation.base.BaseFragment
 import com.pss.presentation.databinding.FragmentWomanNameBinding
-import com.pss.presentation.viewmode.MainViewModel
+import com.pss.presentation.viewmodel.MainViewModel
 
 class WomanNameFragment : BaseFragment<FragmentWomanNameBinding>(R.layout.fragment_woman_name) {
     private val mainViewModel by activityViewModels<MainViewModel>()

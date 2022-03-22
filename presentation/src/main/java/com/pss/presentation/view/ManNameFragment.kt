@@ -1,11 +1,7 @@
 package com.pss.presentation.view
 
-import android.os.Bundle
 import android.text.TextUtils
-import androidx.fragment.app.Fragment
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
 import com.pss.domain.utils.ErrorType
@@ -13,7 +9,7 @@ import com.pss.domain.utils.ScreenState
 import com.pss.presentation.R
 import com.pss.presentation.base.BaseFragment
 import com.pss.presentation.databinding.FragmentManNameBinding
-import com.pss.presentation.viewmode.MainViewModel
+import com.pss.presentation.viewmodel.MainViewModel
 
 class ManNameFragment : BaseFragment<FragmentManNameBinding>(R.layout.fragment_man_name) {
     private val mainViewModel by activityViewModels<MainViewModel>()

@@ -1,4 +1,4 @@
-package com.pss.presentation.viewmode
+package com.pss.presentation.viewmodel
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.ViewModel
@@ -11,7 +11,6 @@ import com.pss.domain.utils.RemoteErrorEmitter
 import com.pss.domain.utils.ScreenState
 import com.pss.presentation.widget.utils.SingleLiveEvent
 import dagger.hilt.android.lifecycle.HiltViewModel
-import kotlinx.coroutines.async
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 

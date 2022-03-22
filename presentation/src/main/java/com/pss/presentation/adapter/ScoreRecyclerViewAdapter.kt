@@ -7,7 +7,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.pss.domain.model.DomainScore
 import com.pss.presentation.R
 import com.pss.presentation.databinding.ScoreRecyclerViewItemBinding
-import com.pss.presentation.viewmode.MainViewModel
+import com.pss.presentation.viewmodel.MainViewModel
 
 class ScoreRecyclerViewAdapter(
     private val viewModel: MainViewModel
