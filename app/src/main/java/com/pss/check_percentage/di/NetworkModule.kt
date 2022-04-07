@@ -19,6 +19,7 @@ object NetworkModule {
 
     @Provides
     @Singleton
+    //okHttp 의존성 주입 (아래 retrofit 의존성 주입에 사용)
     fun provideHttpClient(): OkHttpClient {
         return OkHttpClient.Builder()
             .readTimeout(10, TimeUnit.SECONDS)
@@ -28,8 +29,16 @@ object NetworkModule {
             .build()
     }
 
+    @Provides
+    @Singleton
+    //gson 의존성 주입 (아래 retrofit 의존성 주입에 사용)
+    fun provideConverterFactory(): GsonConverterFactory {
+        return GsonConverterFactory.create()
+    }
+
     @Singleton
     @Provides
+    //retrofit 의존성 주입 (아래 LoveCalculatorApi 의존성 주입에 사용)
     fun provideRetrofitInstance(
         okHttpClient: OkHttpClient,
         gsonConverterFactory: GsonConverterFactory
@@ -44,19 +53,12 @@ object NetworkModule {
 
     @Provides
     @Singleton
-    fun provideConverterFactory(): GsonConverterFactory {
-        return GsonConverterFactory.create()
-    }
-
-    @Provides
-    @Singleton
+    //LoveCalculatorApi interface 의존성 주입
     fun provideLoveCalculatorApiService(retrofit: Retrofit): LoveCalculatorApi {
         return retrofit.create(LoveCalculatorApi::class.java)
     }
 
-
     private fun getLoggingInterceptor(): HttpLoggingInterceptor =
         HttpLoggingInterceptor().apply { level = HttpLoggingInterceptor.Level.BODY }
-
 
 }
