@@ -79,17 +79,19 @@
 │   │   └── model
 │   │       ├── DataLoveResponse.kt
 │   │       └── DataScore.kt
-│   ├── repository
-│   │   ├── remote
-│   │   │   ├── datasource
-│   │   │   │   ├── MainDataSource.kt
-│   │   │   │   └── SplashDataSource.kt
-│   │   │   └── datasourceimpl
-│   │   │       ├── MainDataSourceImpl.kt
-│   │   │       └── SplashDataSourceImpl.kt
-│   │   ├── MainRepositoryImpl.kt
-│   │   └── SplashRepositoryImpl.kt
-          
+│   └── repository
+│       ├── remote
+│       │   ├── datasource
+│       │   │   ├── MainDataSource.kt
+│       │   │   └── SplashDataSource.kt
+│       │   └── datasourceimpl
+│       │       ├── MainDataSourceImpl.kt
+│       │       └── SplashDataSourceImpl.kt
+│       ├── MainRepositoryImpl.kt
+│       └── SplashRepositoryImpl.kt
+│   
+└── buildSrc
+    └── Dependency.kt
 ```
 <br>
 
