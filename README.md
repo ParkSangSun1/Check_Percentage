@@ -13,10 +13,11 @@
 
 <br>
 
-## 👀 App architecture
+## 👀 App tructure
 #### App module(Di) -> Presentation module(View, ViewModel) -> Domain module(Repository, Usecase) -> Data module(Repository, Mapper, Remote)
 
-<br>
+### <br>
+
 ```
 |── app
 |   └── di
