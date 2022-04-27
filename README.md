@@ -106,4 +106,4 @@
 
 ## 🎨 Other than that
 #### 오류나 버그가 발견되면 이슈 넣어주시면 감사하겠습니다
-#### If you find an error or bug, I would appreciate it if you could put in an issue
+#### If you find an error or bug, I would appreciate it if you could put in an issue 
