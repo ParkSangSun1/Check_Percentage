@@ -92,6 +92,7 @@
 │       └── SplashRepositoryImpl.kt
 │   
 └── buildSrc
+    ├── Versions.kt
     └── Dependency.kt
 ```
 <br>
