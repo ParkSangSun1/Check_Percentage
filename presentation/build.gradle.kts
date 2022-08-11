@@ -1,59 +1,55 @@
 plugins {
-    id 'com.android.library'
-    id 'kotlin-android'
-    id 'kotlin-kapt'
-    id 'dagger.hilt.android.plugin'
+    id ("com.android.library")
+    id ("kotlin-android")
+    id ("kotlin-kapt")
+    id ("dagger.hilt.android.plugin")
 }
 
 android {
-    compileSdk 31
+    compileSdk = 31
 
     defaultConfig {
-        minSdk 21
-        targetSdk 31
-        versionCode 1
-        versionName "1.0"
-
-        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
-        consumerProguardFiles "consumer-rules.pro"
+        minSdk = 21
+        targetSdk = 31
+        testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+        consumerProguardFiles("consumer-rules.pro")
     }
 
     buildTypes {
         release {
-            minifyEnabled false
-            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            isMinifyEnabled = false
+            proguardFiles(getDefaultProguardFile("proguard-android.txt"), "proguard-rules.pro")
         }
     }
+
     compileOptions {
-        sourceCompatibility JavaVersion.VERSION_1_8
-        targetCompatibility JavaVersion.VERSION_1_8
+        sourceCompatibility = JavaVersion.VERSION_1_8
+        targetCompatibility = JavaVersion.VERSION_1_8
     }
+
     kotlinOptions {
-        jvmTarget = '1.8'
+        jvmTarget = "1.8"
     }
+
     buildFeatures {
-        dataBinding true
+        dataBinding = true
     }
 }
 
 dependencies {
-    implementation project(':domain')
-    implementation project(':data')
+    implementation (project (":domain"))
+    implementation (project (":data"))
 
     implementation (KTX.CORE)
     implementation (AndroidX.APP_COMPAT)
     implementation (Google.MATERIAL)
     implementation (AndroidX.CONSTRAINT_LAYOUT)
     implementation (AndroidX.LEGACY)
-    implementation 'androidx.legacy:legacy-support-v4:1.0.0'
-    implementation 'androidx.appcompat:appcompat:1.3.1'
-    implementation 'com.google.firebase:firebase-database-ktx:20.0.3'
-    implementation 'com.google.firebase:firebase-firestore-ktx:24.0.0'
-    implementation 'com.google.android.material:material:1.4.0'
-    implementation 'androidx.constraintlayout:constraintlayout:2.1.1'
-    testImplementation 'junit:junit:4.+'
-    androidTestImplementation (AndroidTest.EXT_JUNIT)
-    androidTestImplementation 'androidx.test.espresso:espresso-core:3.4.0'
+    implementation (Firebase.FIREBASE_DATABASE_KTX)
+    implementation (Firebase.FIREBASE_FIRESTORE_KTX)
+    testImplementation (TestTool.JUNIT)
+    androidTestImplementation (TestTool.ANDROID_X_JUNIT)
+    androidTestImplementation (TestTool.ANDROID_X_ESPRESSO)
 
     // dagger hilt
     implementation (DaggerHilt.DAGGER_HILT)
@@ -93,6 +89,6 @@ dependencies {
     //datastore
     implementation (AndroidX.DATASTORE)
 
-    implementation "com.github.ParkSangSun1:NotificationBarCustom:1.0.3"
-    implementation "com.github.ParkSangSun1:CountNumberEvent:1.0.4"
+    implementation (Library.NOTIFICATION_BAR_CUSTOM)
+    implementation (Library.COUNT_NUMBER_EVENT)
 }

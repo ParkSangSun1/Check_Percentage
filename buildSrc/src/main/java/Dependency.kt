@@ -77,3 +77,19 @@ object NavComponent {
     const val NAVIGATION_TESTING = "androidx.navigation:navigation-testing:$NAV_VERSION"
     const val NAVIGATION_COMPOSE = "androidx.navigation:navigation-compose:2.4.0-alpha10"
 }
+
+object Firebase{
+    const val FIREBASE_DATABASE_KTX = "com.google.firebase:firebase-database-ktx:20.0.3"
+    const val FIREBASE_FIRESTORE_KTX = "com.google.firebase:firebase-firestore-ktx:24.0.0"
+}
+
+object TestTool {
+    const val JUNIT = "junit:junit:4.+"
+    const val ANDROID_X_JUNIT = "androidx.test.ext:junit:1.1.3"
+    const val ANDROID_X_ESPRESSO = "androidx.test.espresso:espresso-core:3.4.0"
+}
+
+object Library{
+    const val NOTIFICATION_BAR_CUSTOM = "com.github.ParkSangSun1:NotificationBarCustom:1.0.3"
+    const val COUNT_NUMBER_EVENT = "com.github.ParkSangSun1:CountNumberEvent:1.0.4"
+}
