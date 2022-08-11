@@ -7,14 +7,14 @@ plugins {
 }
 
 android {
-    compileSdk = 31
+    compileSdk = SdkVersions.compileSdk
 
     defaultConfig {
         applicationId = "com.pss.check_percentage"
-        minSdk = 21
-        targetSdk = 31
-        versionCode = 1
-        versionName = "1.0"
+        minSdk = SdkVersions.minSdk
+        targetSdk = SdkVersions.targetSdk
+        versionCode = AppVersions.androidVersionCode
+        versionName = AppVersions.androidVersionName
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
