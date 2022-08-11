@@ -2,6 +2,7 @@
 
 ## 🎯 Use stack & skill
 - Kotlin 100%
+- Kotlin DSL
 - Firebase RTDB
 - Firestore
 - MVVM
