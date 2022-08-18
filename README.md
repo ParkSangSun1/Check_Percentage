@@ -2,6 +2,7 @@
 
 ## 🎯 Use stack & skill
 - Kotlin 100%
+- Kotlin DSL
 - Firebase RTDB
 - Firestore
 - MVVM
@@ -91,6 +92,7 @@
 │       └── SplashRepositoryImpl.kt
 │   
 └── buildSrc
+    ├── Versions.kt
     └── Dependency.kt
 ```
 <br>
