@@ -2,11 +2,14 @@ package com.pss.presentation.view
 
 import android.view.View
 import androidx.fragment.app.activityViewModels
+import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
+import com.pss.domain.utils.FirebaseState
 import com.pss.presentation.R
 import com.pss.presentation.base.BaseFragment
 import com.pss.presentation.databinding.FragmentResultBinding
 import com.pss.presentation.viewmodel.MainViewModel
+import kotlinx.coroutines.launch
 import java.text.SimpleDateFormat
 import java.util.*
 
@@ -45,17 +48,13 @@ class ResultFragment : BaseFragment<FragmentResultBinding>(R.layout.fragment_res
         binding.backMainBtn.isEnabled = true
     }
 
-    private fun saveStatistics() {
-        mainViewModel.getStatistics()
-            .addOnSuccessListener {
-                if (it != null) mainViewModel.setStatistics(it.value.toString().toInt() + 1)
-                    .addOnFailureListener {
-                        error()
-                    }
+    private fun saveStatistics() = lifecycleScope.launch {
+        with(mainViewModel.getStatistics()){
+            when(this.state){
+                FirebaseState.SUCCESS -> if (mainViewModel.setStatistics(this.result.toString().toInt() + 1).state == FirebaseState.FAILURE) error()
+                FirebaseState.FAILURE -> error()
             }
-            .addOnFailureListener {
-                error()
-            }
+        }
     }
 
     private fun error() = shortShowToast("통계를 저장하는데 오류가 발생했습니다")

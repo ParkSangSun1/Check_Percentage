@@ -10,5 +10,5 @@ class SplashViewModel @Inject constructor(
     private val checkAppVersionUseCase: CheckAppVersionUseCase
 ): ViewModel() {
 
-   fun checkAppVersion() = checkAppVersionUseCase.execute()
+   suspend fun checkAppVersion() = checkAppVersionUseCase.execute()
 }

@@ -1,16 +1,17 @@
 package com.pss.data.repository.remote.datasourceimpl
 
-import com.google.android.gms.tasks.Task
-import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.Query
-import com.google.firebase.firestore.QuerySnapshot
+import com.pss.data.mapper.FirebaseMapper.toResultString
 import com.pss.data.remote.api.LoveCalculatorApi
 import com.pss.data.remote.model.DataLoveResponse
 import com.pss.data.remote.model.DataScore
 import com.pss.data.repository.remote.datasource.MainDataSource
 import com.pss.data.utils.base.BaseDataSource
+import com.pss.domain.model.DomainScore
+import com.pss.domain.model.GetFirebaseResponse
+import com.pss.domain.model.SetFirebaseResponse
 import com.pss.domain.utils.RemoteErrorEmitter
 import javax.inject.Inject
 
@@ -26,19 +27,27 @@ class MainDataSourceImpl @Inject constructor(
         }?.body()
     }
 
-    override fun getStatistics(): Task<DataSnapshot> {
-        return firebaseRtdb.reference.child("statistics").get()
+    override suspend fun getStatistics(): GetFirebaseResponse<String> {
+        return safeGetFirebaseRTDBCall{
+            firebaseRtdb.reference.child("statistics").get()
+        }.toResultString()
     }
 
-    override fun setStatistics(plusResult: Int): Task<Void> {
-        return firebaseRtdb.reference.child("statistics").setValue(plusResult)
+    override suspend fun setStatistics(plusResult: Int): SetFirebaseResponse {
+        return safeSetFirebaseRTDBCall{
+            firebaseRtdb.reference.child("statistics").setValue(plusResult)
+        }
     }
 
-    override fun setScore(score: DataScore): Task<Void> {
-        return fireStore.collection("score").document().set(score)
+    override suspend fun setScore(score: DataScore): SetFirebaseResponse {
+        return safeSetFirebaseRTDBCall{
+            fireStore.collection("score").document().set(score)
+        }
     }
 
-    override fun getScore(): Task<QuerySnapshot> {
-        return fireStore.collection("score").orderBy("date", Query.Direction.DESCENDING).get()
+    override suspend fun getScore(): GetFirebaseResponse<List<DomainScore>> {
+        return safeSetFireStoreCall {
+            fireStore.collection("score").orderBy("date", Query.Direction.DESCENDING).get()
+        }
     }
 }

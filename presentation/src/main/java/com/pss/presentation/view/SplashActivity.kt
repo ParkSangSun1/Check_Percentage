@@ -2,13 +2,16 @@ package com.pss.presentation.view
 
 import android.util.Log
 import androidx.activity.viewModels
+import androidx.lifecycle.lifecycleScope
 import com.pss.barlibrary.CustomBar.Companion.setTransparentBar
+import com.pss.domain.utils.FirebaseState
 import com.pss.presentation.R
 import com.pss.presentation.base.BaseActivity
 import com.pss.presentation.databinding.ActivitySplashBinding
 import com.pss.presentation.viewmodel.SplashViewModel
 import com.pss.presentation.widget.extension.startActivityWithFinish
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.launch
 
 @AndroidEntryPoint
 class SplashActivity : BaseActivity<ActivitySplashBinding>(R.layout.activity_splash) {
@@ -17,14 +20,15 @@ class SplashActivity : BaseActivity<ActivitySplashBinding>(R.layout.activity_spl
 
     override fun init() {
         setTransparentBar(this)
-        splashViewModel.checkAppVersion()
-            .addOnSuccessListener {
-                Log.d("로그","App version : ${it.value}")
-                if(appVersion == it.value) this.startActivityWithFinish(this, MainActivity::class.java)
+        checkAppVersion()
+    }
+
+    private fun checkAppVersion() = lifecycleScope.launch {
+        with(splashViewModel.checkAppVersion()){
+            if (this.state == FirebaseState.SUCCESS){
+                if(appVersion == this.result) this@SplashActivity.startActivityWithFinish(this@SplashActivity, MainActivity::class.java)
                 else longShowToast("앱 버전이 다릅니다!")
-            }
-            .addOnFailureListener {
-                shortShowToast("알수없는 오류가 발생했습니다, 오류코드 - ${it.message}")
-            }
+            }else shortShowToast("알수없는 오류가 발생했습니다")
+        }
     }
 }

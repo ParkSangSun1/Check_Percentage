@@ -7,6 +7,7 @@ import com.pss.domain.model.DomainLoveResponse
 import com.pss.domain.model.DomainScore
 import com.pss.domain.usecase.*
 import com.pss.domain.utils.ErrorType
+import com.pss.domain.utils.FirebaseState
 import com.pss.domain.utils.RemoteErrorEmitter
 import com.pss.domain.utils.ScreenState
 import com.pss.presentation.widget.utils.SingleLiveEvent
@@ -51,27 +52,31 @@ class MainViewModel @Inject constructor(
                 }
         }
 
-    fun getStatistics() = getStatisticsUseCase.execute()
+    suspend fun getStatistics() = getStatisticsUseCase.execute()
 
-    fun setStatistics(plusResult: Int) = setStatisticsUseCase.execute(plusResult)
+    suspend fun setStatistics(plusResult: Int) = setStatisticsUseCase.execute(plusResult)
 
-    fun getStatisticsDisplay() = getStatisticsUseCase.execute()
-        .addOnSuccessListener {
-            _getStatisticsDisplayEvent.value = it.value.toString().toInt()
-        }
-
-    fun getScore() = getScoreUseCase.execute()
-        .addOnSuccessListener { snapshot ->
-            scoreList.clear()
-            for (item in snapshot.documents) {
-                item.toObject(DomainScore::class.java).let {
-                    scoreList.add(it!!)
-                }
+    fun getStatisticsDisplay() = viewModelScope.launch {
+        with(getStatisticsUseCase.execute()){
+            if(this.state == FirebaseState.SUCCESS){
+                _getStatisticsDisplayEvent.value = this.result.toString().toInt()
             }
-            _getScoreEvent.call()
         }
+    }
 
-    fun setScore(man: String, woman: String, percentage: Int, date: String) {
+    fun getScore() = viewModelScope.launch {
+        with(getScoreUseCase.execute()){
+            if (this.state == FirebaseState.SUCCESS){
+                scoreList.clear()
+                for (item in this.result!!) {
+                    scoreList.add(item)
+                }
+                _getScoreEvent.call()
+            }
+        }
+    }
+
+    fun setScore(man: String, woman: String, percentage: Int, date: String) = viewModelScope.launch {
         setScoreUseCase.execute(DomainScore(man, woman, percentage, date))
     }
 

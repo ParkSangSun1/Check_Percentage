@@ -6,5 +6,5 @@ import javax.inject.Inject
 class SetStatisticsUseCase @Inject constructor(
     private val mainRepository: MainRepository
 ) {
-    fun execute(plusResult: Int) = mainRepository.setStatistics(plusResult)
+    suspend fun execute(plusResult: Int) = mainRepository.setStatistics(plusResult)
 }

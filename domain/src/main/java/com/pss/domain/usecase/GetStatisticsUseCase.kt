@@ -7,5 +7,5 @@ import javax.inject.Inject
 class GetStatisticsUseCase @Inject constructor(
     private val mainRepository: MainRepository
 ) {
-    fun execute() = mainRepository.getStatistics()
+    suspend fun execute() = mainRepository.getStatistics()
 }

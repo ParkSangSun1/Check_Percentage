@@ -1,9 +1,16 @@
 package com.pss.data.utils.base
 
 import android.util.Log
+import com.google.android.gms.tasks.Task
+import com.google.firebase.firestore.QuerySnapshot
+import com.pss.domain.model.DomainScore
+import com.pss.domain.model.GetFirebaseResponse
+import com.pss.domain.model.SetFirebaseResponse
 import com.pss.domain.utils.ErrorType
+import com.pss.domain.utils.FirebaseState
 import com.pss.domain.utils.RemoteErrorEmitter
 import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.tasks.await
 import kotlinx.coroutines.withContext
 import okhttp3.ResponseBody
 import org.json.JSONObject
@@ -91,5 +98,54 @@ abstract class BaseDataSource {
         } catch (e: Exception) {
             "Something wrong happened"
         }
+    }
+
+    suspend inline fun <T> safeGetFirebaseRTDBCall(crossinline callFunction: () -> Task<T>) : GetFirebaseResponse<T> {
+        var state = FirebaseState.FAILURE
+        var result : T? = null
+        callFunction.invoke()
+            .addOnSuccessListener {
+                result = it
+                state = FirebaseState.SUCCESS
+            }
+            .addOnFailureListener {
+                state = FirebaseState.FAILURE
+            }.await()
+
+        return GetFirebaseResponse(state = state, result = result)
+    }
+
+    suspend inline fun <T> safeSetFirebaseRTDBCall(crossinline callFunction: () -> Task<T>) : SetFirebaseResponse {
+        var state = FirebaseState.FAILURE
+        callFunction.invoke()
+            .addOnSuccessListener {
+                state = FirebaseState.SUCCESS
+            }
+            .addOnFailureListener {
+                state = FirebaseState.FAILURE
+            }.await()
+
+        return SetFirebaseResponse(state = state)
+    }
+
+    suspend inline fun safeSetFireStoreCall(crossinline callFunction: () -> Task<QuerySnapshot>) : GetFirebaseResponse<List<DomainScore>> {
+        var state = FirebaseState.FAILURE
+        val result = arrayListOf<DomainScore>()
+
+        callFunction.invoke()
+            .addOnSuccessListener {
+                result.clear()
+                for (item in it.documents) {
+                    item.toObject(DomainScore::class.java).let {
+                        result.add(it!!)
+                    }
+                }
+                state = FirebaseState.SUCCESS
+            }
+            .addOnFailureListener {
+                state = FirebaseState.FAILURE
+            }.await()
+
+        return GetFirebaseResponse(state = state, result = result)
     }
 }

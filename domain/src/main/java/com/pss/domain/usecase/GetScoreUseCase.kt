@@ -6,5 +6,5 @@ import javax.inject.Inject
 class GetScoreUseCase @Inject constructor(
     private val mainRepository: MainRepository
 ) {
-    fun execute() = mainRepository.getScore()
+    suspend fun execute() = mainRepository.getScore()
 }

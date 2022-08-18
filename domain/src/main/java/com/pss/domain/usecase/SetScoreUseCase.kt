@@ -7,5 +7,5 @@ import javax.inject.Inject
 class SetScoreUseCase @Inject constructor(
     private val mainRepository: MainRepository
 ) {
-    fun execute(score: DomainScore) = mainRepository.setScore(score)
+    suspend fun execute(score: DomainScore) = mainRepository.setScore(score)
 }

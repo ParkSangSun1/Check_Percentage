@@ -1,11 +1,12 @@
 package com.pss.data.repository.remote.datasource
 
 import com.google.android.gms.tasks.Task
-import com.google.firebase.database.DataSnapshot
 import com.google.firebase.firestore.QuerySnapshot
 import com.pss.data.remote.model.DataLoveResponse
 import com.pss.data.remote.model.DataScore
 import com.pss.domain.model.DomainScore
+import com.pss.domain.model.GetFirebaseResponse
+import com.pss.domain.model.SetFirebaseResponse
 import com.pss.domain.utils.RemoteErrorEmitter
 
 interface MainDataSource {
@@ -17,11 +18,11 @@ interface MainDataSource {
         wName: String
     ): DataLoveResponse?
 
-    fun getStatistics(): Task<DataSnapshot>
+    suspend fun getStatistics(): GetFirebaseResponse<String>
 
-    fun setStatistics(plusResult: Int): Task<Void>
+    suspend fun setStatistics(plusResult: Int): SetFirebaseResponse
 
-    fun setScore(score: DataScore): Task<Void>
+    suspend fun setScore(score: DataScore): SetFirebaseResponse
 
-    fun getScore(): Task<QuerySnapshot>
+    suspend fun getScore(): GetFirebaseResponse<List<DomainScore>>
 }

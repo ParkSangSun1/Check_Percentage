@@ -54,7 +54,6 @@ dependencies {
     // dagger hilt
     implementation (DaggerHilt.DAGGER_HILT)
     kapt (DaggerHilt.DAGGER_HILT_COMPILER)
-    implementation (DaggerHilt.DAGGER_HILT_VIEW_MODEL)
     kapt (DaggerHilt.DAGGER_HILT_ANDROIDX_COMPILER)
 
     // ViewModel

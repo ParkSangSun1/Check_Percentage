@@ -14,10 +14,10 @@ object AndroidX {
     const val CONSTRAINT_LAYOUT = "androidx.constraintlayout:constraintlayout:2.1.0"
     const val APP_COMPAT = "androidx.appcompat:appcompat:1.3.1"
     const val LEGACY = "androidx.legacy:legacy-support-v4:1.0.0"
-    const val LIFECYCLE_VIEW_MODEL = "androidx.lifecycle:lifecycle-viewmodel-ktx:2.3.1"
+    const val LIFECYCLE_VIEW_MODEL = "androidx.lifecycle:lifecycle-viewmodel-ktx:2.4.0"
     const val LIFECYCLE_LIVEDATA = "androidx.lifecycle:lifecycle-livedata-ktx:2.3.1"
     const val ACTIVITY = "androidx.activity:activity-ktx:1.3.1"
-    const val FRAGMENT = "androidx.fragment:fragment-ktx:1.3.6"
+    const val FRAGMENT = "androidx.fragment:fragment-ktx:1.5.2"
     const val DATASTORE = "androidx.datastore:datastore-preferences:1.0.0"
 }
 
@@ -41,10 +41,10 @@ object AndroidTest {
 }
 
 object DaggerHilt {
-    const val DAGGER_HILT = "com.google.dagger:hilt-android:2.40.5"
-    const val DAGGER_HILT_COMPILER = "com.google.dagger:hilt-android-compiler:2.40.5"
-    const val DAGGER_HILT_VIEW_MODEL = "androidx.hilt:hilt-lifecycle-viewmodel:1.0.0-alpha03"
+    const val DAGGER_HILT = "com.google.dagger:hilt-android:2.43.2"
+    const val DAGGER_HILT_COMPILER = "com.google.dagger:hilt-android-compiler:2.43.2"
     const val DAGGER_HILT_ANDROIDX_COMPILER = "androidx.hilt:hilt-compiler:1.0.0"
+    const val DAGGER_HILT_JAVAX = "javax.inject:javax.inject:1"
 }
 
 object Retrofit {
@@ -60,14 +60,7 @@ object OkHttp {
 
 object Coroutines {
     const val COROUTINES = "org.jetbrains.kotlinx:kotlinx-coroutines-android:1.5.2"
-}
-
-object CameraX {
-    const val CAMERA_CORE = "androidx.camera:camera-core:1.0.2"
-    const val CAMERA_CAMERA2 = "androidx.camera:camera-camera2:1.0.2"
-    const val CAMERA_LIFECYCLE = "androidx.camera:camera-lifecycle:1.0.2"
-    const val CAMERA_VIEW = "androidx.camera:camera-view:1.0.0-alpha29"
-    const val CAMERA_EXTENSIONS = "androidx.camera:camera-extensions:1.0.0-alpha29"
+    const val COROUTINES_PLAY_SERVICES = "org.jetbrains.kotlinx:kotlinx-coroutines-play-services:1.1.1"
 }
 
 object NavComponent {
